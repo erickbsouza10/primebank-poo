@@ -1,0 +1,796 @@
+:root {
+    --bb-green: #007a3c;
+    --bb-yellow: #ffde00;
+    --dark-overlay: rgba(0, 0, 0, 0.2);
+    --main-font: 'Arial', sans-serif;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--main-font);
+    background-color: #f0f0f0;
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Layout e Fundo (Mobile First) */
+
+
+/* ------------------------------------------- */
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/jpeg;base64,...');
+    /* Coloque aqui sua imagem codificada em base64 ou um link */
+    /* Usarei uma imagem padrão como placeholder */
+    background-image: url('https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/12/messi-foto-mais-curtida.jpg?w=1200&h=900&crop=1');
+    background-size: cover;
+    background-position: center top;
+    /* Foco no rosto, como na imagem de referência */
+    filter: brightness(0.9);
+    /* Escurece um pouco para o texto aparecer */
+}
+
+.icon-png {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    object-fit: contain;
+    pointer-events: none;
+    /* transforma ícone escuro em branco */
+    filter: brightness(0) invert(1);
+}
+
+.background-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* DEGRADÊ PRETO MAIS FORTE EM BAIXO */
+    background: linear-gradient( to top, rgba(0, 0, 0, 0.75) 0%, /* preto forte na base */
+    rgba(0, 0, 0, 0.35) 40%, /* meio escurecido */
+    rgba(0, 0, 0, 0.10) 75%, /* topo leve */
+    rgba(0, 0, 0, 0.0) 100%/* sem overlay no topo */
+    );
+    z-index: 2;
+    pointer-events: none;
+    /* não interfere no clique */
+}
+
+.background-image {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 3;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Alinha o conteúdo principal */
+    align-items: center;
+}
+
+.user-profile {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.user-profile:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.action-btn {
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.action-btn:hover {
+    transform: scale(1.06);
+    background-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.promo-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.promo-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Efeito quando o usuário pressiona (click/touch) */
+
+.user-profile:active,
+.action-btn:active,
+.promo-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Container precisa permitir overflow para o ripple */
+
+.action-btn,
+.user-profile,
+.promo-card {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Estilo da onda */
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(255, 255, 255, 0.4);
+    animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Topo e Logo */
+
+
+/* ------------------------------------------- */
+
+.top-bar {
+    width: 90%;
+    max-width: 450px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 14px;
+}
+
+.logo-prime img {
+    position: absolute;
+    top: 40px;
+    left: 5%;
+    width: 50px;
+    height: 50px;
+}
+
+.logo-svg {
+    width: 100%;
+    height: 100%;
+    /* Ajuste o path para simular o logo BB se desejar */
+    fill: var(--bb-yellow);
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Conteúdo Principal (Centralizado) */
+
+
+/* ------------------------------------------- */
+
+.main-content {
+    width: 90%;
+    max-width: 450px;
+    /* Largura ideal para um app mobile */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Espalha os elementos */
+    padding-top: 80px;
+    /* Espaço para o logo e topo */
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    position: relative;
+    top: -50px;
+}
+
+.sponsor-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.9;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.cup-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    /* Torna a imagem branca */
+    filter: brightness(0) invert(1);
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Perfil do Usuário (Central) */
+
+
+/* ------------------------------------------- */
+
+.user-profile {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: auto;
+    cursor: pointer !important;
+    /* Empurra para baixo */
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-initials {
+    background-color: #e0f0ff;
+    /* Cor de destaque para o "Er" */
+    color: #005a9d;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+    color: var(--bb-green);
+}
+
+.account-details {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.icon-scan svg {
+    width: 24px;
+    height: 24px;
+    color: var(--bb-green);
+    stroke-width: 2.5;
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Links e Ações Flutuantes */
+
+
+/* ------------------------------------------- */
+
+
+/* Modal */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    background: #0f0f0f;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 14px;
+    padding: 20px;
+    color: #fff;
+}
+
+.modal-box h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+/* Lista de contas */
+
+.lista-contas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.conta-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.conta-item:hover {
+    background: #242424;
+}
+
+.conta-avatar {
+    width: 40px;
+    height: 40px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.conta-info p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.conta-info span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.btn-fechar {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/* Tela de PIN */
+
+.pin-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    color: #fff;
+    text-align: center;
+}
+
+.pin-screen.active {
+    display: flex;
+}
+
+.pin-inputs {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.pin-inputs input {
+    width: 50px;
+    height: 60px;
+    text-align: center;
+    font-size: 26px;
+    border-radius: 10px;
+    border: none;
+    background: #1c1c1c;
+    color: #fff;
+}
+
+.btn-pin {
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: none;
+    background: #00ff9c;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-voltar {
+    align-self: flex-start;
+    margin-bottom: 20px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pin-error {
+    color: #ff4d4d;
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+
+/* Shake erro */
+
+
+/* Controle de telas */
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+
+
+/* Tela principal visível */
+
+.main-content {
+    transition: opacity 0.3s ease;
+}
+
+
+/* PIN screen animação */
+
+.pin-screen {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.pin-screen.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-6px);
+    }
+    50% {
+        transform: translateX(6px);
+    }
+    75% {
+        transform: translateX(-6px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.pin-screen.shake {
+    animation: shake 0.3s;
+}
+
+.action-links {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.link-recuperar {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    /* Melhora a leitura sobre a imagem */
+}
+
+.floating-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.action-btn:hover {
+    background-color: var(--dark-overlay);
+}
+
+.action-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    stroke-width: 2;
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Cartão de Promoção */
+
+
+/* ------------------------------------------- */
+
+.promo-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px;
+    /* Espaço entre ações e cartão */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #007a3c;
+    /* Verde BB */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.card-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+    stroke-width: 1.5;
+}
+
+.promo-details h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--bb-green);
+}
+
+.promo-details p {
+    margin: 5px 0 10px 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.hashtag {
+    background-color: #e0f0ff;
+    color: #005a9d;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.arrow-icon {
+    font-size: 24px;
+    color: var(--bb-green);
+    margin-left: auto;
+    /* Empurra para a direita */
+    align-self: center;
+}
+
+
+/* ------------------------------------------- */
+
+
+/* Footer Arrow */
+
+
+/* ------------------------------------------- */
+
+.footer-arrow {
+    text-align: center;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+    /* Efeito de "subir e descer" */
+}
+
+.footer-arrow svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    stroke-width: 3;
+}
+
+
+/* =========================================== */
+
+
+/* ANIMAÇÕES (Surgindo Elementos Flutuando) */
+
+
+/* =========================================== */
+
+
+/* 1. Animação de Entrada (para o carregamento) */
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 2. Animação Flutuante (Loop) */
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+/* 3. Animação de Bounce para a seta (Footer) */
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.float-element {
+    /* Animação de Entrada */
+    opacity: 0;
+    animation: fadeInSlideUp 0.6s ease-out forwards;
+    /* Animação Flutuante (aplicada com JS para controle) */
+    /* animation: float 3s ease-in-out infinite; */
+}
+
+
+/* Adicionar atraso na entrada para cada elemento flutuante */
+
+#user-profile {
+    animation-delay: 0.2s;
+}
+
+.action-links {
+    animation-delay: 0.4s;
+}
+
+#trocar-conta {
+    animation-delay: 0.6s;
+}
+
+#fazer-pix {
+    animation-delay: 0.8s;
+}
+
+#promo-card {
+    animation-delay: 1.0s;
+}
+
+
+/* =========================================== */
+
+
+/* RESPONSIVIDADE (Desktop/Tablet) */
+
+
+/* =========================================== */
+
+@media (min-width: 768px) {
+    .background-image {
+        /* Para desktop, a imagem pode ser mais ampla */
+        background-position: center center;
+    }
+    .content-overlay {
+        /* Centraliza o conteúdo principal verticalmente no desktop/tablet */
+        justify-content: center;
+    }
+    .main-content {
+        /* Diminui o padding vertical e garante que o conteúdo fique centralizado */
+        padding-top: 0;
+        padding-bottom: 0;
+        justify-content: center;
+        /* Adiciona um padding para distanciar do topo e base da tela */
+        max-width: 500px;
+        min-height: 500px;
+        /* Garante que os elementos não fiquem muito juntos */
+    }
+    /* Esconde elementos que são tipicamente de mobile app */
+    .top-bar,
+    .logo-bb,
+    .footer-arrow {
+        display: none;
+    }
+    /* Ajuste o layout do perfil e links para telas maiores, se necessário */
+    .user-profile {
+        padding: 25px;
+    }
+    .action-links {
+        text-align: center;
+        margin-top: 25px;
+    }
+    .promo-card {
+        padding: 30px;
+    }
+}
