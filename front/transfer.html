@@ -4,20 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Prime Bank | Transferência</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
     <h2>Transferir</h2>
 
-    <input type="text" id="origem" placeholder="Conta origem">
     <input type="text" id="destino" placeholder="Conta destino">
-    <input type="number" id="valor" placeholder="Valor">
 
-    <button id="btn-confirmar">Enviar</button>
-    <p id="msg"></p>
+    <input type="number" id="valor" placeholder="Valor da transferência" min="1">
 
-    <button onclick="voltar()">Voltar</button>
+    <button id="btn-confirmar" type="button">
+        Confirmar Transferência
+    </button>
+
+    <br><br>
+
+    <button id="btn-voltar" type="button">
+        Voltar ao Dashboard
+    </button>
 
     <script src="js/transfer.js"></script>
 </body>

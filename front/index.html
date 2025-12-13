@@ -5,30 +5,36 @@
     <meta charset="UTF-8">
     <title>Prime Bank | Acesso</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h2>Prime Bank</h2>
+    <!-- CONTAINER CENTRAL -->
+    <div class="login-container">
 
-    <!-- CRIAR CONTA -->
-    <h3>Criar conta</h3>
+        <h2>Prime Bank</h2>
 
-    <input type="text" id="titular" placeholder="Nome do titular">
-    <input type="text" id="numero" placeholder="Número da conta">
-    <input type="password" id="pinCriar" placeholder="Crie um PIN (4 dígitos)">
-    <button id="btn-criar">Criar Conta</button>
+        <!-- CRIAR CONTA -->
+        <h3>Criar conta</h3>
 
-    <hr>
+        <input type="text" id="titular" placeholder="Nome do titular">
+        <input type="text" id="numero" placeholder="Número da conta">
+        <input type="password" id="pinCriar" placeholder="Crie um PIN (4 dígitos)">
+        <button id="btn-criar">Criar Conta</button>
 
-    <!-- LOGIN -->
-    <h3>Entrar</h3>
+        <hr>
 
-    <input type="text" id="numeroLogin" placeholder="Número da conta">
-    <input type="password" id="pinLogin" placeholder="PIN">
-    <button id="btn-login">Entrar</button>
+        <!-- LOGIN -->
+        <h3>Entrar</h3>
 
-    <p id="msg"></p>
+        <input type="text" id="numeroLogin" placeholder="Número da conta">
+        <input type="password" id="pinLogin" placeholder="PIN">
+        <button id="btn-login">Entrar</button>
+
+        <p id="msg"></p>
+
+    </div>
 
     <script src="js/login.js"></script>
 </body>
