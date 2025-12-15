@@ -1,0 +1,114 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* FUNDO DA PÁGINA */
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #1e3a46, #050b0f);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+/* CARD CENTRAL */
+body > h2,
+body > input,
+body > button,
+body > p {
+    width: 320px;
+}
+
+/* TÍTULO */
+h2 {
+    background: #0e1a20;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* CONTAINER SIMULADO (inputs + botões) */
+h2 + input {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* INPUTS */
+input {
+    background: #3b3b3b;
+    border: none;
+    outline: none;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #cfcfcf;
+}
+
+input:focus {
+    background: #444;
+    box-shadow: inset 0 0 0 1px #00ff9d;
+}
+
+/* BOTÃO CONFIRMAR */
+#btn-confirmar {
+    margin-top: 12px;
+    padding: 12px;
+    background: linear-gradient(90deg, #00ff9d, #00c57a);
+    border: none;
+    border-radius: 6px;
+    color: #003d2a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#btn-confirmar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 255, 157, 0.4);
+}
+
+/* MENSAGEM */
+#msg {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* BOTÃO VOLTAR */
+button[onclick] {
+    margin-top: 10px;
+    padding: 12px;
+    background: linear-gradient(90deg, #ff4d4d, #cc0000);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button[onclick]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(255, 77, 77, 0.4);
+}
+
+/* SOMBRA GERAL DO CARD */
+h2,
+input,
+button {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}

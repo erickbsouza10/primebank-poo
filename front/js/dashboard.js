@@ -1,23 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Verifica se existe uma conta autenticada
+
     // const contaAtiva = localStorage.getItem("contaAtiva");
 
-    // // Se não houver conta ativa, redireciona para o login
+    // // Proteção de rota
     // if (!contaAtiva) {
     //     window.location.href = "index.html";
-    //     return; // Para evitar que o código continue executando
+    //     return;
     // }
 
-    // Botão para ir à transferência
+    // Buscar saldo da conta
+    fetch(`http://localhost:8080/contas/${contaAtiva}`)
+        .then(res => res.json())
+        .then(conta => {
+            if (conta && typeof conta.saldo === "number") {
+                document.getElementById("saldo").innerText =
+                    `R$ ${conta.saldo.toFixed(2)}`;
+            } else {
+                document.getElementById("saldo").innerText = "Erro ao carregar";
+            }
+        })
+        .catch(() => {
+            document.getElementById("saldo").innerText = "Erro de conexão";
+        });
+
+    // Ir para transferência
     document.getElementById("btn-transferir")
         .addEventListener("click", () => {
             window.location.href = "transfer.html";
         });
 
-    // Botão de sair (logout)
-    document.getElementById("btn-sair")
-        .addEventListener("click", () => {
-            localStorage.removeItem("contaAtiva"); // Remove a conta da sessão
-            window.location.href = "index.html"; // Redireciona para a página de login
-        });
+    // Logout
+    document.getElementById("btn-sair").addEventListener("click", () => {
+        localStorage.removeItem("contaAtiva");
+        window.location.href = "index.html";
+    });
+
 });

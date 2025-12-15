@@ -5,29 +5,41 @@
     <meta charset="UTF-8">
     <title>Prime Bank | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body>
 
-    <h2>Dashboard</h2>
+    <main class="dashboard-container">
 
-    <p><strong>Status:</strong> Logado com sucesso</p>
-    <a href="depositar.html">
+        <h2>Dashboard</h2>
 
-        <button id="btn-depositar" type="button">
-         Depositar
+        <p class="status">
+            <strong>Status:</strong> Logado com sucesso
+        </p>
+
+        <!-- SALDO -->
+        <p class="status">
+            <strong>Saldo:</strong>
+            <span id="saldo">Carregando...</span>
+        </p>
+
+        <a href="depositar.html" class="btn-link">
+            <button id="btn-depositar" type="button">
+                Depositar
+            </button>
+        </a>
+
+        <a href="transfer.html" class="btn-link">
+            <button id="btn-transferir" type="button">
+                Transferir
+            </button>
+        </a>
+        <button id="btn-sair" type="button">
+            Sair
         </button>
-    </a>
 
-    <button id="btn-transferir" type="button">
-        Transferir
-    </button>
-
-    <br><br>
-
-    <button id="btn-sair" type="button">
-        Sair
-    </button>
+    </main>
 
     <script src="js/dashboard.js"></script>
 </body>

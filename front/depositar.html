@@ -5,24 +5,50 @@
     <meta charset="UTF-8">
     <title>Prime Bank | Depósito</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/depositar.css">
 </head>
 
 <body>
+    <div class="card">
 
-    <h2>Depositar</h2>
+        <h2>Depositar</h2>
 
-    <input type="number" id="deposito-valor" placeholder="Valor do depósito" min="1">
+        <section class="formulario-transacao">
+            <input type="number" id="deposito-valor" placeholder="Valor do depósito" min="1" required>
+            <button id="btn-depositar" type="button">
+                Enviar
+            </button>
+        </section>
 
-    <button id="btn-depositar" type="button">
-        Depositar
-    </button>
+        <hr class="divisor-secundario">
 
-    <br><br>
+        <button id="btn-voltar" type="button">
+            Voltar ao Início
+        </button>
+    </div>
 
-    <button id="btn-voltar" type="button">
-        Voltar ao Dashboard
-    </button>
+    <div id="modal-overlay" class="modal-overlay hidden">
 
+        <div class="modal-content">
+
+            <p id="modal-titulo-sucesso"> Depósito Realizado com Sucesso!</p>
+
+            <div class="modal-info">
+                <p>Valor depositado:</p>
+                <p class="valor-modal-info">R$ <span id="valor-depositado-modal">--</span></p>
+            </div>
+
+            <hr class="divisor-secundario">
+
+            <p>Seu Novo Saldo Atual é de:</p>
+            <p class="valor-confirmacao">R$ <span id="novo-saldo-modal">--</span></p>
+
+            <button id="btn-voltar-inicio-modal">
+                Voltar ao Início
+            </button>
+        </div>
+    </div>
     <script src="js/depositar.js"></script>
 </body>
 
