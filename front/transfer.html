@@ -4,21 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Prime Bank | Transferência</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/transfer.css">
 </head>
 
 <body>
 
-    <h2>Transferir</h2>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
 
-    <input type="text" id="origem" placeholder="Conta origem">
-    <input type="text" id="destino" placeholder="Conta destino">
-    <input type="number" id="valor" placeholder="Valor">
+    <!-- CARD CENTRAL -->
+    <div class="login-container content-overlay" style="padding: 200px;">
 
-    <button id="btn-confirmar">Enviar</button>
-    <p id="msg"></p>
+        <h2>Transferir</h2>
 
-    <button onclick="voltar()">Voltar</button>
+        <input type="text" id="origem" placeholder="Conta origem">
+
+        <input type="text" id="destino" placeholder="Conta destino">
+
+        <input type="text" id="valor" placeholder="R$ 0,00">
+
+        <button id="btn-confirmar">
+            Enviar
+        </button>
+
+        <p id="msg"></p>
+
+        <button onclick="voltar()">
+            Voltar
+        </button>
+
+    </div>
 
     <script src="js/transfer.js"></script>
 </body>

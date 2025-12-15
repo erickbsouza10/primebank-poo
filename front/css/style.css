@@ -3,8 +3,7 @@
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
-    /* IMAGEM DE FUNDO (MESSI) */
+    font-family: 'Poppins', sans-serif;
     background-image: url("https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/12/messi-foto-mais-curtida.jpg?w=1200&h=900&crop=1");
     background-size: cover;
     background-position: center top;
@@ -40,19 +39,8 @@ body::after {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
-}
-
-
-/* CARD CENTRAL */
-
-.login-container {
-    width: 100%;
-    max-width: 380px;
-    padding: 30px 24px;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -74,58 +62,172 @@ body::after {
 }
 
 
-/* INPUTS */
+/* ===== INPUTS PROFISSIONAIS ===== */
 
 .login-container input {
-    padding: 14px;
-    margin-bottom: 12px;
-    border-radius: 12px;
-    border: none;
+    width: 100%;
+    /* Garante que os inputs ocupem toda a largura */
+    padding: 16px 14px;
+    margin-bottom: 14px;
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
 }
+
+
+/* Placeholder mais elegante */
 
 .login-container input::placeholder {
-    color: #8c8c8c;
+    color: #9b9b9b;
+    font-weight: 400;
 }
+
+
+/* Hover sutil */
+
+.login-container input:hover {
+    transform: translateY(-1px);
+}
+
+
+/* Foco – destaque premium */
 
 .login-container input:focus {
-    outline: 2px solid rgba(0, 255, 156, 0.4);
+    outline: none;
+    border-color: #00ff9c;
+    box-shadow: 0 0 0 3px rgba(0, 255, 156, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 
-/* BOTÕES */
+/* Input desabilitado (caso use futuramente) */
+
+.login-container input:disabled {
+    background: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* ===== BOTÕES ===== */
+
+
+/* ===== BOTÕES PROFISSIONAIS ===== */
 
 .login-container button {
-    padding: 14px;
-    border-radius: 12px;
+    width: 100%;
+    padding: 16px;
+    margin-top: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 14px;
     border: none;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+
+/* ===== BOTÃO ENTRAR (PRIMÁRIO) ===== */
+
+#btn-login {
+    background: linear-gradient(135deg, #00ff9c, #00d989);
+    color: #000;
+    box-shadow: 0 10px 25px rgba(0, 255, 156, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 255, 156, 0.45);
+}
+
+#btn-login:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(0, 255, 156, 0.35);
+}
+
+
+/* ===== BOTÃO CRIAR CONTA (SECUNDÁRIO) ===== */
+
+#btn-criar {
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+#btn-criar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+#btn-criar:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ===== BOTÃO DESABILITADO ===== */
+
+.login-container button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 
 /* CRIAR */
 
-#btn-criar {
-    background: #fff;
-    color: #000;
+
+/* ===== PRELOADER GLOBAL ===== */
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#btn-criar:hover {
-    transform: scale(1.03);
+
+/* Spinner */
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #00ff9c;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
 }
 
 
-/* ENTRAR */
+/* Animação */
 
-#btn-login {
-    background: #00ff9c;
-    color: #000;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-#btn-login:hover {
-    transform: scale(1.04);
+
+/* Suavizar saída */
+
+#preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
 
@@ -144,4 +246,104 @@ body::after {
     text-align: center;
     margin-top: 15px;
     font-size: 14px;
+    color: white;
+}
+
+
+/* ===== MODAL FULLSCREEN ===== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+
+/* Esconde o modal */
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    text-align: center;
+    color: black;
+    padding: 20px;
+    transform: scale(1.5);
+}
+
+.modal-content img {
+    width: 220px;
+    margin-bottom: 30px;
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+
+/* Barra de progresso */
+
+.progress-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6px;
+    background: #ffffff;
+    font-family: "Poppins", sans-serif;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    transition: width 0.4s ease;
+}
+
+#login-box,
+#criar-box {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-box input,
+#criar-box input,
+#login-box button,
+#criar-box button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* ===== TELA DE LOGIN E CRIAR CONTA ===== */
+
+
+/* Tela de login e criar conta com transição suave */
+
+#login-box,
+#criar-box {
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+/* ===== ALINHAMENTO DE CONTEÚDO ===== */
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
 }

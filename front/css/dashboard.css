@@ -1,136 +1,308 @@
-/* RESET */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* ... Seu código RESET e PRELOADER (acima) ... */
 
-/* FUNDO COM DEGRADÊ */
+
+/* FUNDO COM DEGRADÊ (Mantido, já é bom) */
+
 body {
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-
-    background: linear-gradient(
-        135deg,
-        #0f2027,
-        #203a43,
-        #2c5364
-    );
-
+    /* Sugestão: Usar uma fonte moderna (Ex: 'Poppins' ou 'Space Mono' se disponível) */
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient( 135deg, #0f2027, #203a43, #2c5364);
     display: flex;
     align-items: center;
     justify-content: center;
-
     position: relative;
     overflow: hidden;
 }
 
-/* FADES TRANSPARENTES */
-body::before {
+
+/* OVERLAY: Adicionando partículas de fundo (apenas visual) */
+
+body::after {
     content: "";
     position: fixed;
     inset: 0;
-    pointer-events: none;
-
-    background:
-        /* topo */
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.85),
-            transparent 35%
-        ),
-        /* base */
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.9),
-            transparent 35%
-        ),
-        /* esquerda */
-        linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.7),
-            transparent 30%
-        ),
-        /* direita */
-        linear-gradient(
-            to left,
-            rgba(0, 0, 0, 0.7),
-            transparent 30%
-        );
-
     z-index: 1;
+    /* Tente adicionar um ruído sutil para textura high-tech */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
 }
 
-/* CARD DASHBOARD */
+
+/* CARD DASHBOARD (Glassmorphism Dark) */
+
 .dashboard-container {
     position: relative;
-    z-index: 2;
-
+    z-index: 5;
+    /* Aumentado para sobrepor o novo body::after */
     width: 100%;
-    max-width: 420px;
-    padding: 30px 25px;
-
-    border-radius: 18px;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(8px);
-
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-
+    max-width: 440px;
+    /* Levemente mais largo */
+    padding: 35px 30px;
+    /* Mais espaço interno */
+    border-radius: 20px;
+    background: rgba(17, 25, 40, 0.75);
+    /* Fundo mais escuro e sólido */
+    backdrop-filter: blur(16px) saturate(180%);
+    /* Efeito glassmorphism intenso */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    /* Borda sutil de vidro */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 255, 156, 0.1);
+    /* Sombra mais profunda + leve brilho neon */
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    text-align: center;
+    gap: 20px;
 }
 
-/* TEXTO */
+
+/* Títulos */
+
+.dashboard-container h1,
 .dashboard-container h2 {
     color: #00ff9c;
-    margin-bottom: 8px;
+    text-shadow: 0 0 5px rgba(0, 255, 156, 0.5);
+    /* Efeito neon sutil */
+    font-weight: 700;
 }
 
-.dashboard-container p {
+.actions-title {
+    margin-top: 10px;
+    font-size: 1.1em;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 255, 156, 0.2);
+    padding-bottom: 5px;
+}
+
+
+/* --- HEADER --- */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.user-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 255, 156, 0.4);
+    /* Brilho neon na foto */
+    padding: 2px;
+}
+
+.user-welcome {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.user-name {
+    font-size: 1.4em;
+    margin: 0;
     color: #ffffff;
+    text-shadow: none;
+    /* Remove o neon duplicado */
+}
+
+
+/* Botão Sair Ícone */
+
+#btn-sair {
+    background: transparent;
+    color: #ff4d4d;
+    font-weight: 600;
+    font-size: 0.9em;
+    padding: 8px 12px;
+    border: 1px solid #ff4d4d80;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn-sair span {
+    display: block;
+    margin: 0 auto;
+}
+
+.icon-svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+
+/* Alinhamento interno do botão */
+
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* Hover com leve animação */
+
+.action-button:hover .icon-svg {
+    transform: scale(1.15);
+}
+
+
+/* Cor automática conforme botão */
+
+.primary-button .icon-svg {
+    color: #000;
+}
+
+.secondary-button .icon-svg {
+    color: #ffffff;
+}
+
+.secondary-button:hover .icon-svg {
+    color: #00ff9c;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 156, 0.8));
+}
+
+.user-avatar img {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(93%) saturate(600%) hue-rotate(90deg) brightness(95%) contrast(110%);
+}
+
+#btn-sair:hover {
+    background: #ff4d4d;
+    color: #000;
+    transform: none;
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
+}
+
+
+/* --- CARD DE SALDO (O Destaque) --- */
+
+.balance-card {
+    background: rgba(0, 255, 156, 0.1);
+    /* Fundo sutil do neon */
+    border-radius: 12px;
+    padding: 25px;
+    text-align: left;
+    border: 1px solid rgba(0, 255, 156, 0.2);
+    box-shadow: inset 0 0 15px rgba(0, 255, 156, 0.2);
+    /* Brilho interno */
     margin-bottom: 20px;
 }
 
-/* BOTÕES (PADRÃO) */
-.dashboard-container button {
-    width: 100%;
-    padding: 14px;
-
-    border: none;
-    border-radius: 12px;
-
-    font-weight: bold;
-    font-size: 15px;
-
-    cursor: pointer;
-    transition: transform 0.2s, opacity 0.2s;
+.balance-label {
+    font-size: 0.9em;
+    color: #00ff9c;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* BOTÕES INDIVIDUAIS */
-#btn-depositar {
+.balance-value #saldo {
+    font-size: 2.8em;
+    /* Saldo gigante e destacado */
+    font-weight: 900;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 15px;
+    /* Brilho Neon Forte para o Saldo */
+    text-shadow: 0 0 8px #00ff9c, 0 0 15px #00ff9c, 0 0 20px #00ff9c;
+    transition: color 0.3s;
+}
+
+.status {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+
+/* --- BOTÕES DE AÇÃO (Grid) --- */
+
+.action-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Dois botões lado a lado */
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.action-button {
+    width: 100%;
+    padding: 16px;
+    /* Botões maiores */
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+
+/* Botão Primário (Depositar) - Neon */
+
+.primary-button {
     background: #00ff9c;
     color: #000;
+    box-shadow: 0 8px 15px rgba(0, 255, 156, 0.5);
 }
 
-#btn-transferir {
-    background: #ffffff;
-    color: #000;
+.primary-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(0, 255, 156, 0.7);
+    background: #00e08f;
 }
 
-#btn-sair {
-    background: #ff4d4d;
-    color: #fff;
+
+/* Botão Secundário (Transferir) - Efeito Vidro */
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.1);
+    /* Vidro claro sutil */
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* HOVER */
-.dashboard-container button:hover {
-    transform: scale(1.04);
-    opacity: 0.95;
+.secondary-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: rgba(255, 255, 255, 0.2);
+    color: #00ff9c;
 }
 
-/* LINK SEM ESTILO */
-.dashboard-container a {
+
+/* Remoção do botão de sair duplicado e ajuste de links */
+
+.btn-link {
     text-decoration: none;
+    display: block;
+    /* Para que os botões dentro do grid funcionem */
+}
+
+
+/* Ocultar elementos desnecessários do HTML antigo */
+
+.dashboard-container h2 {
+    display: none;
+    /* Oculta o título 'Dashboard' */
 }

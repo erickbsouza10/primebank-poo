@@ -2,39 +2,67 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Prime Bank | Acesso</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- CONTAINER CENTRAL -->
-    <div class="login-container">
+    <div id="preloader">
+
+        <div class="spinner"></div>
+    </div>
+
+
+    <div class="login-container content-overlay">
+
 
         <h2>Prime Bank</h2>
 
-        <!-- CRIAR CONTA -->
-        <h3>Criar conta</h3>
-
-        <input type="text" id="titular" placeholder="Nome do titular">
-        <input type="text" id="numero" placeholder="Número da conta">
-        <input type="password" id="pinCriar" placeholder="Crie um PIN (4 dígitos)">
-        <button id="btn-criar">Criar Conta</button>
-
-        <hr>
-
-        <!-- LOGIN -->
-        <h3>Entrar</h3>
-
-        <input type="text" id="numeroLogin" placeholder="Número da conta">
-        <input type="password" id="pinLogin" placeholder="PIN">
-        <button id="btn-login">Entrar</button>
-
         <p id="msg"></p>
 
+
+        <section id="login-box">
+
+            <h3>Entrar na conta</h3>
+
+            <input type="text" id="numeroLogin" placeholder="Número da conta">             <input type="password" id="pinLogin" placeholder="PIN">             <button id="btn-login">Entrar</button>
+            <hr>
+
+        </section>
+
+
+        <section id="criar-box" class="hidden">
+
+            <h3>Criar nova conta</h3>
+
+            <input type="text" id="titular" placeholder="Nome do titular">             <input type="text" id="numero" placeholder="Número da conta">             <input type="password" id="pinCriar" placeholder="Crie um PIN (4 dígitos)">
+            <button id="btn-criar">Criar Conta</button>
+            <hr>
+
+        </section>
+
     </div>
+
+    <div id="modal-criacao" class="modal hidden">
+
+        <div class="modal-content">
+            <img id="etapa-img" src="img/etapa1.png" alt="Processando">
+            <h2 id="etapa-titulo">Analisando dados</h2>
+
+            <p id="etapa-desc">Estamos validando suas informações…</p>
+        </div>
+
+        <div class="progress-container">
+
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+
 
     <script src="js/login.js"></script>
 </body>

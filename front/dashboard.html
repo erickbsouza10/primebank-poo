@@ -2,44 +2,91 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Prime Bank | Dashboard</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body>
 
+    <div id="preloader">
+
+        <div class="spinner"></div>
+    </div>
+
     <main class="dashboard-container">
 
-        <h2>Dashboard</h2>
+        <header class="dashboard-header">
 
-        <p class="status">
-            <strong>Status:</strong> Logado com sucesso
-        </p>
+            <div class="user-header">
 
-        <!-- SALDO -->
-        <p class="status">
-            <strong>Saldo:</strong>
-            <span id="saldo">Carregando...</span>
-        </p>
+                <div class="user-avatar">
+                    <img id="user-photo" class="filter-white neon-border" src="https://cdn-icons-png.flaticon.com/512/3106/3106921.png" alt="Foto do usuário">                 </div>
 
-        <a href="depositar.html" class="btn-link">
-            <button id="btn-depositar" type="button">
-                Depositar
-            </button>
-        </a>
+                <div class="user-info">
 
-        <a href="transfer.html" class="btn-link">
-            <button id="btn-transferir" type="button">
-                Transferir
-            </button>
-        </a>
-        <button id="btn-sair" type="button">
-            Sair
+                    <p class="user-welcome">Bem-vindo(a),</p>
+
+                    <h1 class="user-name">Nome do Usuário</h1>
+                </div>
+            </div>
+            <button id="btn-sair" type="button" class="icon-button">
+                                <span>SAIR</span> 
+            </button>         </header>
+
+        <section class="balance-card neon-glow">
+
+            <p class="balance-label">Seu Saldo Disponível</p>
+
+            <div class="balance-value">
+                <span id="saldo">Carregando...</span>             </div>
+
+            <p class="status">Status: Logado com sucesso</p>
+        </section>
+
+
+        <h2 class="actions-title">Ações Rápidas</h2>
+
+
+        <div class="action-buttons-grid">
+
+            <a href="depositar.html" class="btn-link">
+                <button id="btn-depositar" type="button" class="action-button primary-button">
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <!-- ÍCONE DEPOSITAR (download) -->
+                <path d="M12 3v10m0 0l-4-4m4 4l4-4M5 21h14"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+            </svg>
+            <span>Depositar</span>
         </button>
+            </a>
+
+            <a href="transfer.html" class="btn-link">
+                <button id="btn-transferir" type="button" class="action-button secondary-button">
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <!-- ÍCONE TRANSFERIR (upload) -->
+                <path d="M12 21V11m0 0l4 4m-4-4l-4 4M5 3h14"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+            </svg>
+            <span>Transferir</span>
+        </button>
+            </a>
+
+        </div>
 
     </main>
+
 
     <script src="js/dashboard.js"></script>
 </body>

@@ -1,3 +1,28 @@
+const inputValor = document.getElementById("deposito-valor");
+
+function moedaParaNumero(valor) {
+    return parseFloat(
+        valor.replace(/\./g, "").replace(",", ".")
+    );
+}
+
+/* ===== MÁSCARA DE MOEDA BR ===== */
+function formatarMoeda(valor) {
+    valor = valor.replace(/\D/g, ""); // só números
+
+    if (!valor) return "";
+
+    valor = (parseInt(valor, 10) / 100).toFixed(2);
+
+    return valor.replace(".", ",")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+/* Aplica máscara em tempo real */
+inputValor.addEventListener("input", () => {
+    inputValor.value = formatarMoeda(inputValor.value);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const contaAtiva = localStorage.getItem("contaAtiva");
@@ -9,7 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("btn-depositar").addEventListener("click", () => {
 
-        const valor = Number(document.getElementById("deposito-valor").value);
+        const valorFormatado = document.getElementById("deposito-valor").value;
+
+        if (!valorFormatado) {
+            alert("Informe um valor válido");
+            return;
+        }
+
+        const valor = moedaParaNumero(valorFormatado);
+
+        if (isNaN(valor) || valor <= 0) {
+            alert("Informe um valor válido");
+            return;
+        }
 
         if (valor <= 0) {
             alert("Informe um valor válido");
@@ -41,4 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "dashboard.html";
     });
 
+});
+
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    preloader.classList.add("hidden");
+
+    // remove do DOM depois da animação
+    setTimeout(() => {
+        preloader.remove();
+    }, 500);
 });

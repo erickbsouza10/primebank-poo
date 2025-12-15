@@ -10,45 +10,64 @@
 </head>
 
 <body>
-    <div class="card">
 
-        <h2>Depositar</h2>
-
-        <section class="formulario-transacao">
-            <input type="number" id="deposito-valor" placeholder="Valor do depósito" min="1" required>
-            <button id="btn-depositar" type="button">
-                Enviar
-            </button>
-        </section>
-
-        <hr class="divisor-secundario">
-
-        <button id="btn-voltar" type="button">
-            Voltar ao Início
-        </button>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="spinner"></div>
     </div>
 
+    <main class="dashboard-container">
+
+        <!-- HEADER -->
+        <header class="dashboard-header">
+            <h1 class="page-title">Depósito</h1>
+
+            <button id="btn-voltar" class="icon-button">
+                ← Voltar
+            </button>
+        </header>
+
+        <!-- CARD PRINCIPAL -->
+        <section class="deposit-card neon-glow">
+
+            <p class="deposit-label">Informe o valor do depósito</p>
+
+            <input type="text" id="deposito-valor" placeholder="R$ 0,00" inputmode="numeric" autocomplete="off">
+
+            <button id="btn-depositar" class="action-button primary-button">
+                <svg class="icon-svg" viewBox="0 0 24 24">
+                    <path d="M12 3v10m0 0l-4-4m4 4l4-4M5 21h14"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+                <span>Confirmar Depósito</span>
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL DE SUCESSO -->
     <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content neon-glow">
 
-        <div class="modal-content">
+            <h2 id="modal-titulo-sucesso">Depósito realizado</h2>
 
-            <p id="modal-titulo-sucesso"> Depósito Realizado com Sucesso!</p>
+            <p class="modal-label">Valor depositado</p>
+            <p class="modal-value">R$ <span id="valor-depositado-modal">--</span></p>
 
-            <div class="modal-info">
-                <p>Valor depositado:</p>
-                <p class="valor-modal-info">R$ <span id="valor-depositado-modal">--</span></p>
-            </div>
+            <p class="modal-label">Novo saldo</p>
+            <p class="modal-value destaque">R$ <span id="novo-saldo-modal">--</span></p>
 
-            <hr class="divisor-secundario">
-
-            <p>Seu Novo Saldo Atual é de:</p>
-            <p class="valor-confirmacao">R$ <span id="novo-saldo-modal">--</span></p>
-
-            <button id="btn-voltar-inicio-modal">
-                Voltar ao Início
+            <button id="btn-voltar-inicio-modal" class="action-button secondary-button">
+                Voltar ao Dashboard
             </button>
         </div>
     </div>
+
     <script src="js/depositar.js"></script>
 </body>
 
